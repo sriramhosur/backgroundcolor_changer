@@ -1,11 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState } from "react";
 
 function App() {
+  let color = ["red", "green", "yellow", "blue"];
+  let [bg, setBG] = useState("#282c34");
+  let [count, setCount] = useState(0);
+  let onClickListener = () => {
+    if (count === (color.length-1)) {
+      setCount(0);
+    } else {
+      setCount(count + 1);
+    }
+    setBG(color[count]);
+    
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      <header className="App-header" style={{ backgroundColor: `${bg}` }}>
+        <button onClick={onClickListener}>Change the background color</button>
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
